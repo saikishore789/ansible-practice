@@ -1,0 +1,19 @@
+- hosts: node
+  become: yes
+  tasks:
+   - name: installing nginx
+     command: amazon-linux-extras install nginx1.12=latest -y
+     args:
+       chdir: /usr/share/
+   
+   - name: insert index page
+     copy:
+       src: index.html
+       dest: /usr/share/nginx/html/index.html
+ 
+   - name: start nginx
+     service:
+       name: nginx
+       state: started
+
+   
