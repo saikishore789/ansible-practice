@@ -1,0 +1,20 @@
+- hosts: node
+  become: yes
+  tasks:
+  - name: download git
+    git:
+      repo: "https://github.com/saikishore789/spring3-mvc-maven-xml-hello-world.git"
+      dest: /home/mylogin/hello-world
+
+  - name: build maven
+    shell: "mvn package install"
+    args:
+      chdir: /home/mylogin/hello-world
+  
+  - name: deploying tomcat
+    copy:
+      src: /home/mylogin/hello-world/target/spring3-mvc-maven-xml-hello-world-1.2.war
+      dest: /opt/apache-tomcat-9.0.40/webapps/
+      remote_src: true
+  
+    

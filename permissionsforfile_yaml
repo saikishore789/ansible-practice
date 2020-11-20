@@ -1,0 +1,10 @@
+- hosts: node
+  tasks:
+  - name: giving permissions for multiple files
+    file:
+      path: "{{item.location}}"
+      state: touch
+      mode: "{{item.mode}}"
+    with_items:
+    - { location: 'test.txt',mode: '0566'}
+    - { location: 'test1.txt',mode: '0655'} 

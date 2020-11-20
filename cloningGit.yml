@@ -1,0 +1,8 @@
+- hosts: server
+  become: yes
+  tasks:
+  - name: cloning git
+    command: "git clone https://github.com/saikishore789/spring3-mvc-maven-xml-hello-world.git"
+    args: 
+      chdir: /tmp/
+ 

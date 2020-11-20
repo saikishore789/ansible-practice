@@ -1,0 +1,11 @@
+- hosts: node
+  become: yes
+  tasks: 
+  - name: installing docker,mysql,wget
+    yum:
+      name: "{{item}}"
+      state: present 
+    with_items:
+    - docker
+    - mysql
+    - wget

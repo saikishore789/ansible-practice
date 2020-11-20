@@ -1,0 +1,4 @@
+- name: installing git
+  yum:
+    name: git
+    state: absent

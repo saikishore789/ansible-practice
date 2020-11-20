@@ -1,0 +1,7 @@
+- hosts: server
+  become: yes
+  tasks:
+  - name: installing java
+    yum: 
+      name: java
+      state: present

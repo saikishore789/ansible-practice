@@ -1,0 +1,23 @@
+- hosts: node
+  become: yes
+  tasks: 
+  - name: creating directory for tomcat
+    file:
+      path: /opt/tomcat/
+      state: directory
+
+  - name: downloading tomcat
+    get_url:
+      url: https://mirrors.estointernet.in/apache/tomcat/tomcat-7/v7.0.106/bin/apache-tomcat-7.0.106.tar.gz
+      dest: /opt/tomcat
+  
+  - name: unarchive the tar file
+    unarchive:
+      src: /opt/tomcat/apache-tomcat-7.0.106.tar.gz
+      dest: /opt/tomcat
+      remote_src: yes
+  
+  - name: installing tomcat
+    yum:
+      name: apache-tomcat-7.0.106
+      state: present

@@ -1,0 +1,11 @@
+[all:vars]
+ansible_python_interpreter= /usr/bin/python
+ansible_ssh_private_key_file= ./oct-mum.pem
+ansible_user= ec2-user
+
+[server]
+15.207.89.128
+
+[node]
+15.207.99.173
+

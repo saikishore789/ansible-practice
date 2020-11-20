@@ -1,0 +1,10 @@
+- hosts: node
+  tasks:
+  - name: create file with content
+    copy: 
+      dest: sai.txt
+      content: 
+        sai kishore reddy
+        preparing for devops
+
+

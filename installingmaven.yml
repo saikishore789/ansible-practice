@@ -1,0 +1,28 @@
+- hosts: node
+  become: yes
+  tasks:
+ 
+
+  - name: downloading maven
+    get_url: 
+      url: https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+      dest: /usr/local
+  
+  - name: unarchiving maven
+    unarchive:
+      src: /usr/local/apache-maven-3.6.3-bin.tar.gz
+      dest: /usr/local
+
+  - name: softlink maven
+    command: "ln -s apache-maven-3.6.3 maven"
+    args: 
+      chdir: /usr/local
+   
+  - name: Update path for maven use
+    shell: export PATH=/usr/local/bin:$PATH
+
+  - name: install maven
+    yum:
+      name: maven
+      state: present
+
