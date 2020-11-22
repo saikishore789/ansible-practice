@@ -1,0 +1,15 @@
+- hosts: node
+  gather_facts: yes
+  tasks: 
+#  - name: starting httpd
+#     service:
+#     name: httpd
+#     state: started
+
+  - name: maven version
+    command: mvn --version
+    register: maven-version
+ 
+  - name: maven version output
+    debug:
+      var: maven-version

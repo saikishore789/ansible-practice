@@ -1,0 +1,13 @@
+- hosts: node
+  gather_facts: no
+  tasks:
+
+
+
+  - name: maven version
+    command: mvn --version
+    register: maven_version
+
+  - name: maven version output
+    debug:
+      var: maven_version

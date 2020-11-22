@@ -1,0 +1,7 @@
+- hosts: node
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: printing ip address
+    debug: 
+      msg: "node ip address is {{ ansible_default_ipv4.address }}"

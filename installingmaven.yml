@@ -19,7 +19,7 @@
       chdir: /usr/local
    
   - name: Update path for maven use
-    shell: export PATH=/usr/local/bin:$PATH
+    shell: export PATH=/usr/local/maven/bin:$PATH
 
   - name: install maven
     yum:
