@@ -1,4 +1,4 @@
-- hosts: node
+- hosts: ap-south-1
   become: yes
   tasks:
    - name: installing nginx
@@ -10,10 +10,15 @@
      copy:
        src: index.html
        dest: /usr/share/nginx/html/index.html
- 
+     notify:
+     - Restart nginx
+
    - name: start nginx
      service:
        name: nginx
        state: started
-
-   
+  handlers:
+     - name: Restart nginx
+       service:
+         name: nginx
+         state: restarted   
