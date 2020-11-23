@@ -1,0 +1,4 @@
+---
+# defaults file for motd
+vars:
+  system_manager: saikishorereddy
