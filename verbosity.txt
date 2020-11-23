@@ -1,0 +1,1 @@
+We can add debug message which is easy to debug individual tasks but to debug the entire playbook we also have an option to print verbose message and increase verbosity level to get more detailed output of activity performed in the backend.

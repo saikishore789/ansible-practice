@@ -1,0 +1,3 @@
+Although you might be confident in the code you have written, it still pays to test it before running it for real in a production environment. In such cases, it is a good idea to be able to run your code, but with a safety net in place. This is what check mode is for
+
+Not all modules support check mode, but all major modules do, and more and more modules are being added at every release. In particular, note that the command and shell modules do not support it because it is impossible for the module to tell what commands will result in a change, and what won't. Therefore, these modules will always return changed when they're run outside of check mode because they assume a change has been made
