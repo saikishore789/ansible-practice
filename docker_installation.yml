@@ -1,0 +1,12 @@
+- hosts: node
+  become: yes
+  tasks:
+  - name: installing docker
+    yum:
+      name: docker
+      state: present
+  
+  - name: starting docker service
+    service:
+      name: docker
+      state: started

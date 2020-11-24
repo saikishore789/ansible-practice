@@ -1,0 +1,21 @@
+- hosts: node
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: creating dockerfile
+    copy: 
+      src: /etc/ansible/dockerfile
+      dest: /opt/dockerfile
+
+
+
+  - name: building image
+    shell: "docker build -t centos:v1 ."
+    args:
+      chdir: /opt
+
+  - name: runnind container
+    shell: "docker run -itd --name centos  centos:v1"
+    args: 
+      chdir: /opt
+

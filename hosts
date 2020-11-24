@@ -4,8 +4,9 @@ ansible_ssh_private_key_file= ./oct-mum.pem
 ansible_user= ec2-user
 
 [server]
-52.66.245.196
+13.233.102.238
 
 [node]
-52.66.69.149
+13.233.154.74
+
 
