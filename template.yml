@@ -1,0 +1,16 @@
+- hosts: node
+  gather_facts: no
+  tasks:
+  - name: creating simplfile
+    file: 
+      dest: simplfile.txt
+      
+      state: touch
+      mode: 0744
+ 
+  - name: configure BIND
+    template: 
+      src: templates/simplfile.txt 
+      dest: simplfile.txt
+      mode: 0640
+    

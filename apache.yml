@@ -1,0 +1,12 @@
+- hosts: node
+  user: root
+  vars:
+    apache_version: 2.6
+    motd_warning: 'WARNING: Use by ACME Employees ONLY'
+    testserver: yes
+  tasks:
+  - name: setup a MOTD
+    copy:
+      dest: sai.txt
+      content: "{{ motd_warning }}"
+

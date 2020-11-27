@@ -1,0 +1,21 @@
+- hosts: node
+  become: yes
+  tasks:
+  - name: Make a Directory in /opt
+    file:
+      path: /opt/sshkeys
+      state: directory
+
+
+      mode: 0700
+  - name: Copy SSH keys over
+    copy:
+      src: "keys/{{ item }}.pub"
+      dest: "/opt/sshkeys/{{ item }}.pub"
+
+
+      mode: 0600
+    with_items:
+      - dan
+      - kate
+      - mal

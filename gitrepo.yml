@@ -1,0 +1,9 @@
+- hosts: node
+  gather_facts: no
+
+  tasks:
+  - name: checkout repo
+    git:
+      repo: https://github.com/saikishore789/repo.git
+      dest: /home/git/repo
+      force: no
