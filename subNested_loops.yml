@@ -1,0 +1,16 @@
+- hosts: all
+ 
+  vars:
+    users: 
+      - name: testuser
+        comments: 
+          - 'for testing purpose'
+      - name: devuser
+        comments: 
+          - 'for dev purpose'
+  tasks:
+  - name: user creation
+    shell: useradd -c "{{ item[1] }}" "{{ item[0].name }}"
+    with_subelements:
+      - users
+      - comments

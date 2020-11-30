@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+  vars: 
+    keys:
+      - key1
+      - key2
+      - key3
+      - key4
+  tasks:
+  - name: Distribute SSH keys among multiple users
+    lineinfile: 
+      dest=/home/{{ item[0] }}/.ssh/authorized_keys 
+      line={{ item[1] }} 
+      state=present
+    
+    with_nested:
+      - [ 'calvin', 'josh', 'alice' ]
+      - '{{ keys }}' 

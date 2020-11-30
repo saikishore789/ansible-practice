@@ -1,0 +1,41 @@
+- name: Adding the host server
+  hosts: all
+
+  vars_prompt:
+  - name: "Server"
+    prompt: "Server IP"
+    private: no
+
+  - name: "User"
+    prompt: "Username"
+    default: "Linux"
+    private: no
+
+  - name: "Passwd"
+    prompt: "Password"
+    private: yes
+    encrypt: "sha512_crypt"
+
+  - name: "IdFile"
+    prompt: "Identity file path"
+    private: no
+    when: Passwd is undefined
+
+  tasks:
+    - name: Add host server
+      add_host:
+        name: "{{ Server }}"
+        ansible_ssh_user: "{{ User }}"
+        ansible_ssh_private_key_file: "{{ IdFile }}"
+      when: IdFile is defined
+
+    - name: Add host server
+      add_host:
+        name: "{{ Server }}"
+        ansible_ssh_user: "{{ User }}"
+        ansible_ssh_pass: "{{ Passwd }}"
+      when: Passwd is defined
+
+#    - name: Create a file
+#      shell: touch newfile
+#      delegate_to: "{{ Server }}"

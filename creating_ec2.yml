@@ -1,0 +1,27 @@
+- name: Setup an EC2 instance
+  hosts: server
+  connection: local
+  become_method: sudo
+  tasks:
+    - name: Create an EC2 machine
+      ec2:
+        key_name: oct-mum
+        instance_type: t2.micro
+        image: ami-026669ec456129a70
+        wait: yes
+        group: launch-wizard-1
+        vpc_subnet_id: subnet-8387f9cf
+        region: ap-south-1	
+      register: newmachines
+
+    - name: Wait for SSH to start
+      wait_for:
+        host: "{{ newmachines.instances[0].public_ip }}"
+        port: 22
+        timeout: 300
+      delegate_to: server
+
+    - name: Add the machine to the inventory
+      add_host:
+        hostname: "{{ newmachines.instances[0].public_ip }}"
+        groupname: new

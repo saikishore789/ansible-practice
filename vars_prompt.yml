@@ -7,7 +7,11 @@
       private: no
 
     - name: password
-      prompt: What is your password?
+      prompt: enter your password
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+      salt_size: 7
 
   tasks:
 
