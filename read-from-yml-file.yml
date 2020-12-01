@@ -1,0 +1,16 @@
+---
+ - name: Collects variable from variables.yml file
+   hosts: localhost
+   vars_files:
+     - variables.yml
+     - custom_vars.json
+   gather_facts: false
+   tasks:
+   - debug:
+       msg:
+         - "My name is {{ NAME }}"
+         - "This is {{ COURSE }} tutorial"
+         - "We are learning about {{ CHAPTER }}"
+         - "The value of b is: {{ b }}"
+         - "Second index value of b is: {{ b[1] }}"
+         - "The value of c is {{ c }}"

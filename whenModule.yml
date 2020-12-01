@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: pause for unexpected conditions
+    pause: 
+      prompt="Unexpected OS"
+    when: ansible_os_family != "RedHat"
